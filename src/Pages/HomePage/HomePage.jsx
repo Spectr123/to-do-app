@@ -10,6 +10,7 @@ export default function HomePage() {
     toggleTodo,
     deleteTodo,
     editTodo,
+    toggleImportant,
     newTodo,
     setNewTodo,
     handleAddTodo,
@@ -23,11 +24,11 @@ export default function HomePage() {
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add a new task"
+          placeholder="Добавить новую задачу"
           className={styles.input}
         />
         <button type="submit" className={styles.addButton}>
-          Add
+          Добавить
         </button>
       </form>
       <TodoList
@@ -36,6 +37,7 @@ export default function HomePage() {
         onToggle={toggleTodo}
         onDelete={deleteTodo}
         onEdit={editTodo}
+        onToggleImportant={toggleImportant}
       />
     </div>
   );

@@ -5,7 +5,12 @@ function useTodoApp() {
   const [newTodo, setNewTodo] = useState("");
 
   const incompleteTodos = useMemo(
-    () => todos.filter((todo) => !todo.completed).sort((a, b) => b.id - a.id),
+    () => todos.filter((todo) => !todo.completed).sort((a, b) => {
+      if (a.important !== b.important) {
+        return a.important ? -1 : 1; 
+      }
+      return b.id - a.id;
+    }),
     [todos]
   );
 
@@ -17,7 +22,11 @@ function useTodoApp() {
   const toggleTodo = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        todo.id === id ? { 
+          ...todo, 
+          completed: !todo.completed,
+          important: !todo.completed ? todo.important : false
+        } : todo
       )
     );
   };
@@ -25,7 +34,7 @@ function useTodoApp() {
   const addTodo = (text) => {
     setTodos((prevTodos) => [
       ...prevTodos,
-      { id: Date.now(), text, completed: false },
+      { id: Date.now(), text, completed: false, important: false },
     ]);
   };
 
@@ -37,6 +46,14 @@ function useTodoApp() {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, text: newText } : todo
+      )
+    );
+  };
+  
+  const toggleImportant = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, important: !todo.important } : todo
       )
     );
   };
@@ -57,6 +74,7 @@ function useTodoApp() {
     addTodo,
     deleteTodo,
     editTodo,
+    toggleImportant,
     newTodo,
     setNewTodo,
     handleAddTodo,

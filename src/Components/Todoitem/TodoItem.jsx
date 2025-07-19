@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./TodoItem.module.scss";
-import {FiEdit2, FiTrash2 } from "react-icons/fi";
+import {FiEdit2, FiTrash2, FiStar } from "react-icons/fi";
 
-function TodoItem({ todo, onToggle, onDelete, onEdit }) {
+function TodoItem({ todo, onToggle, onDelete, onEdit, onToggleImportant }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
   useEffect(() => {
@@ -27,7 +27,7 @@ function TodoItem({ todo, onToggle, onDelete, onEdit }) {
   };
 
   return (
-    <li className={`${styles.item} ${todo.completed ? styles.completed : ""} ${isEditing ? styles.editing : ""}`}>
+    <li className={`${styles.item} ${todo.completed ? styles.completed : ""} ${isEditing ? styles.editing : ""} ${todo.important ? styles.important : ""}`}>
       <div className={styles.todoContent}>
         <input
           type="checkbox"
@@ -59,10 +59,19 @@ function TodoItem({ todo, onToggle, onDelete, onEdit }) {
       </div>
       <div className={styles.actions}>
         {!isEditing && !todo.completed && (
-          <button onClick={handleEditClick} className={styles.editButton} title="Редактировать">
-            <FiEdit2 />
-            <span>Ред.</span>
-          </button>
+          <>
+            <button 
+              onClick={(e) => { e.stopPropagation(); onToggleImportant(todo.id); }} 
+              className={`${styles.starButton} ${todo.important ? styles.important : ''}`}
+              title={todo.important ? "Убрать важность" : "Отметить как важное"}
+            >
+              <FiStar />
+            </button>
+            <button onClick={handleEditClick} className={styles.editButton} title="Редактировать">
+              <FiEdit2 />
+              <span>Ред.</span>
+            </button>
+          </>
         )}
         <button onClick={(e) => { e.stopPropagation(); onDelete(todo.id); }} className={styles.deleteButton} title="Удалить">
           <FiTrash2 />

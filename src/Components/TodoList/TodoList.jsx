@@ -2,7 +2,7 @@ import React from "react";
 import TodoItem from "../Todoitem/TodoItem";
 import styles from "./TodoList.module.scss";
 
-function TodoList({ incompleteTodos, completedTodos, onToggle, onDelete, onEdit }) {
+function TodoList({ incompleteTodos, completedTodos, onToggle, onDelete, onEdit, onToggleImportant }) {
 
   return (
     <ul className={styles.list}>
@@ -13,6 +13,7 @@ function TodoList({ incompleteTodos, completedTodos, onToggle, onDelete, onEdit 
           onToggle={onToggle}
           onDelete={onDelete}
           onEdit={onEdit}
+          onToggleImportant={onToggleImportant}
         />
       ))}
 
@@ -29,6 +30,7 @@ function TodoList({ incompleteTodos, completedTodos, onToggle, onDelete, onEdit 
           onToggle={onToggle}
           onDelete={onDelete}
           onEdit={onEdit}
+          onToggleImportant={onToggleImportant}
         />
       ))}
     </ul>
