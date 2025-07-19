@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./HomePage.module.scss";
 import TodoList from "../../Components/TodoList/TodoList";
-import useTodos from "../../Hooks/useTodos";
+import useTodoApp from "../../Hooks/useTodoApp";
 
 export default function HomePage() {
-  const { todos, toggleTodo, addTodo, deleteTodo } = useTodos();
-  const [newTodo, setNewTodo] = useState("");
-
-  const handleAddTodo = (e) => {
-    e.preventDefault();
-    if (newTodo.trim()) {
-      addTodo(newTodo);
-      setNewTodo("");
-    }
-  };
+  const {
+    incompleteTodos,
+    completedTodos,
+    toggleTodo,
+    deleteTodo,
+    editTodo,
+    newTodo,
+    setNewTodo,
+    handleAddTodo,
+  } = useTodoApp();
 
   return (
     <div className={styles.container}>
@@ -30,7 +30,13 @@ export default function HomePage() {
           Add
         </button>
       </form>
-      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
+      <TodoList
+        incompleteTodos={incompleteTodos}
+        completedTodos={completedTodos}
+        onToggle={toggleTodo}
+        onDelete={deleteTodo}
+        onEdit={editTodo}
+      />
     </div>
   );
 }

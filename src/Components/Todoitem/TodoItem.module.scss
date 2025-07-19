@@ -2,18 +2,143 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
-    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    border-bottom: 1px solid #eaeaea;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    margin-bottom: 8px;
+    background-color: white;
+}
+
+.item:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.item.completed {
+    color: #888;
+    background-color: #f8f8f8;
+}
+
+.item.completed .text {
+    text-decoration: line-through;
+}
+
+.item.editing {
+    background-color: #f0f7ff;
+    box-shadow: 0 0 0 2px #4a90e2;
+}
+
+.todoContent {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.text {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 300px;
+}
+
+.text:hover {
+    background-color: #f0f0f0;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.editContainer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    width: 100%;
+    margin-right: 12px;
+}
+
+.editInput {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #4a90e2;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 0 4px rgba(74, 144, 226, 0.2);
+    outline: none;
+    min-width: 0;
+    width: 100%;
+}
+
+.editActions {
+    display: flex;
+    gap: 4px;
+}
+
+.editActions {
+    display: flex;
+    gap: 8px;
+}
+
+.editButton, .deleteButton {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.editButton {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.editButton:hover {
+    background-color: #3a7bc8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.editButton:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .deleteButton {
-    background-color: red;
+    background-color: #f44336;
     color: white;
-    border: none;
-    padding: 4px 8px;
-    cursor: pointer;
 }
 
 .deleteButton:hover {
-    background-color: darkred;
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.deleteButton:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
