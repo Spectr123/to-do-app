@@ -4,16 +4,15 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
 }
 
-/* Стили для разделителя между выполненными и невыполненными задачами */
 .completedDivider {
     margin: 16px 0 12px;
     padding: 8px;
     background-color: #f0f0f0;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 18px;
     color: #666;
     text-align: center;
 }

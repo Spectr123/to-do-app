@@ -1,7 +1,8 @@
-import React from "react";
+import Title from "../../Components/Title/Title";
 import styles from "./HomePage.module.scss";
 import TodoList from "../../Components/TodoList/TodoList";
 import useTodoApp from "../../Hooks/useTodoApp";
+import NewTaskCreater from "../../Components/NewTaskCreater/NewTaskCreater";
 
 export default function HomePage() {
   const {
@@ -18,19 +19,12 @@ export default function HomePage() {
 
   return (
     <div className={styles.container}>
-      <h1>To-Do List</h1>
-      <form onSubmit={handleAddTodo} className={styles.form}>
-        <input
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Добавить новую задачу"
-          className={styles.input}
-        />
-        <button type="submit" className={styles.addButton}>
-          Добавить
-        </button>
-      </form>
+      <Title />
+      <NewTaskCreater
+        newTodo={newTodo}
+        setNewTodo={setNewTodo}
+        handleAddTodo={handleAddTodo}
+      />
       <TodoList
         incompleteTodos={incompleteTodos}
         completedTodos={completedTodos}
