@@ -1,13 +1,17 @@
+import React from "react";
 import Title from "../../Components/Title/Title";
 import styles from "./HomePage.module.scss";
 import TodoList from "../../Components/TodoList/TodoList";
 import useTodoApp from "../../Hooks/useTodoApp";
 import NewTaskCreater from "../../Components/NewTaskCreater/NewTaskCreater";
+import SearchTask from "../../Components/SearchTask/SearchTask";
 
 export default function HomePage() {
   const {
-    incompleteTodos,
-    completedTodos,
+    filteredIncompleteTodos,
+    filteredCompletedTodos,
+    searchValue,
+    setSearchValue,
     toggleTodo,
     deleteTodo,
     editTodo,
@@ -19,15 +23,18 @@ export default function HomePage() {
 
   return (
     <div className={styles.container}>
-      <Title />
+      <div className={styles.containerHeader}>
+        <Title />
+        <SearchTask searchValue={searchValue} onSearchChange={setSearchValue} />
+      </div>
       <NewTaskCreater
         newTodo={newTodo}
         setNewTodo={setNewTodo}
         handleAddTodo={handleAddTodo}
       />
       <TodoList
-        incompleteTodos={incompleteTodos}
-        completedTodos={completedTodos}
+        incompleteTodos={filteredIncompleteTodos}
+        completedTodos={filteredCompletedTodos}
         onToggle={toggleTodo}
         onDelete={deleteTodo}
         onEdit={editTodo}
