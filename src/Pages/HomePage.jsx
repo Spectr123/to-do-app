@@ -1,10 +1,10 @@
 import React from "react";
-import Title from "../../Components/Title/Title";
+import Title from "../Components/Title/Title";
 import styles from "./HomePage.module.scss";
-import TodoList from "../../Components/TodoList/TodoList";
-import useTodoApp from "../../Hooks/useTodoApp";
-import NewTaskCreater from "../../Components/NewTaskCreater/NewTaskCreater";
-import SearchTask from "../../Components/SearchTask/SearchTask";
+import TodoList from "../Components/TodoList/TodoList";
+import useTodoApp from "../Hooks/useTodoApp";
+import NewTaskCreater from "../Components/NewTaskCreater/NewTaskCreater";
+import SearchTask from "../Components/SearchTask/SearchTask";
 
 export default function HomePage() {
   const {
