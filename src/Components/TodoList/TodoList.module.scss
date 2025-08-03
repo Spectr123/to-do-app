@@ -16,3 +16,42 @@
     color: #666;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .list {
+        gap: 4px;
+    }
+    
+    .completedDivider {
+        margin: 12px 0 8px;
+        padding: 6px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .list {
+        gap: 6px;
+        padding: 0 4px;
+    }
+    
+    .completedDivider {
+        margin: 16px 0 12px;
+        padding: 10px 8px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+}
+
+@media (max-width: 320px) {
+    .list {
+        gap: 4px;
+        padding: 0 2px;
+    }
+    
+    .completedDivider {
+        margin: 12px 0 8px;
+        padding: 8px 6px;
+        font-size: 14px;
+    }
+}

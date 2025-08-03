@@ -64,6 +64,7 @@
 .actions {
     display: flex;
     gap: 8px;
+    flex-shrink: 0;
 }
 
 .editContainer {
@@ -90,12 +91,8 @@
 
 .editActions {
     display: flex;
-    gap: 4px;
-}
-
-.editActions {
-    display: flex;
     gap: 8px;
+    flex-shrink: 0;
 }
 
 .editButton, .deleteButton, .starButton {
@@ -171,4 +168,131 @@
 
 .item.important:not(.completed) {
     border-left: 3px solid #ffd700;
+}
+
+@media (max-width: 768px) {
+    .item {
+        padding: 8px;
+        margin-bottom: 6px;
+    }
+    
+    .text {
+        max-width: 250px;
+        margin-left: 6px;
+        padding: 3px 6px;
+    }
+    
+    .checkbox {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+    }
+    
+    .actions {
+        gap: 6px;
+    }
+    
+    .editButton, .deleteButton {
+        padding: 5px 8px;
+        font-size: 12px;
+        gap: 4px;
+    }
+    
+    .starButton {
+        width: 32px;
+        height: 32px;
+        margin-right: 6px;
+    }
+    
+    .editContainer {
+        gap: 6px;
+        margin-right: 8px;
+    }
+    
+    .editInput {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 8px;
+        gap: 8px;
+    }
+    
+    .todoContent {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .text {
+        max-width: none;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+    
+    .actions {
+        justify-content: flex-end;
+        width: 100%;
+    }
+    
+    .editContainer {
+        flex-direction: column;
+        gap: 8px;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    
+    .editActions {
+        justify-content: flex-end;
+        width: 100%;
+    }
+    
+    .editInput {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .starButton {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        margin-right: 0;
+    }
+    
+    .item {
+        position: relative;
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .item {
+        padding: 10px 6px 8px;
+    }
+    
+    .actions {
+        gap: 4px;
+    }
+    
+    .editButton, .deleteButton {
+        padding: 6px;
+        font-size: 11px;
+        min-width: 60px;
+    }
+    
+    .starButton {
+        width: 28px;
+        height: 28px;
+        top: 6px;
+        right: 6px;
+    }
+    
+    .checkbox {
+        width: 14px;
+        height: 14px;
+    }
 }
